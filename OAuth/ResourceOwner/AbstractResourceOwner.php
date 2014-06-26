@@ -263,7 +263,7 @@ abstract class AbstractResourceOwner implements ResourceOwnerInterface
         if (!$content) {
             return array();
         }
-
+        $content = preg_replace('/^y:.*\r\n\r\n/', '', $content);
         $response = json_decode($content, true);
         if (JSON_ERROR_NONE !== json_last_error()) {
             parse_str($content, $response);
